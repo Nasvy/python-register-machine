@@ -6,6 +6,13 @@ print """
 import os
 import sys 
 TOTAL= 0.0
+
+def INPUTS():
+	ARTICLE= raw_input("Insert first article\n")
+	
+	QUANTITY = raw_input("Insert another article\n")
+	PRICE = raw_input("Insert the price of the article\n")
+
 def EXIT():#Here we created an function that allow to the user an option to get out
 	print "Thanks for Visit Us"
 	raw_input("Press Enter for Continue n.n")
@@ -19,10 +26,9 @@ def Menu():#Here we menu that shows the options that user can select!
 		print "#2 Sell Articles"
 		print "#3 Exit"
 		DATA=raw_input("Insert an Option\n")
-		"""if DATA =="1":
-			TOTAL =  
-		elif DATA == "2":
-		"""	
+		if DATA =="1":
+			INPUTS()  
+		#elif DATA == "2":
 		if DATA == "3":
 			EXIT()
 		else:
