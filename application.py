@@ -38,6 +38,7 @@ def DONE():
                     if CARD == "gold" or CARD == "gold card":
                         REDUCTION = TOTAL * 0.05
                         TOTAL = TOTAL - REDUCTION
+                        TOTAL = (TOTAL * 0.12) + TOTAL
                         print "Your total is :" + str(TOTAL)
                         raw_input("Press enter")
                         os.system("cls")
@@ -45,9 +46,10 @@ def DONE():
                     elif CARD == "silver" or CARD == "silver card":
                         REDUCTION = TOTAL * 0.02
                         TOTAL = TOTAL - REDUCTION
+                        TOTAL = (TOTAL * 0.12) + TOTAL
                         print "Your total is :" + str(TOTAL)
-                        os.system("cls")
                         raw_input("Press enter")
+                        os.system("cls")
                         PREG = False
                     else: 
                         print "This card doesn't exists"
@@ -55,9 +57,10 @@ def DONE():
                     print "insert a valid opction"
                     PREG = True
             elif HAVE == "n" or HAVE == "no":
+                TOTAL = (TOTAL * 0.12) + TOTAL
                 print "Your total is :" + str(TOTAL)
-                os.system("cls")
                 raw_input("Press enter")
+                os.system("cls")
         except ValueError:
             print "Insert a valid option"
             PREG = True
