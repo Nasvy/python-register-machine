@@ -11,7 +11,12 @@ print """
 import os
 import sys 
 TOTAL= 0.0
-SELL = {}
+PRIC = {
+	
+}
+INV = {
+	
+}
 def DISCOUNT():
 	CARD = raw_input("Do you have a gold or silver card?\n")
 	CARD = CARD.lower()
@@ -28,7 +33,7 @@ def QUESTION():
 	QUEST = raw_input("Do you want to Insert another article? Y/N or you're Done?\n")
 	QUEST = QUEST.lower()
 	if QUEST == "y" or QUEST == "yes":
-		INPUTS()
+		ARTICLE()
 	elif QUEST == "n" or QUEST == "no":
 		MENU()
 	elif QUEST == "Done":
@@ -37,41 +42,52 @@ def QUESTION():
 		print "Insert a valid option"
 		QUESTION()
 #Here the Cashier insert the articles
-def ARTICLE():
+def ARTICLES():
 	ART = True
-	while True:
-		ARTICLE = raw_input("Insert first article\n")
+	ASD = False
+	while ASD == False:
+		ARTICLE = raw_input("...Insert first article\n")
 		try:
-			if int(ARTICLE) == True:
-				print "U"
+			if  str(ARTICLE).isalpha() == True:
+				print "Article Added"
+				QUANTITYS()
+			else:
+				print "Error"
+				ASD = False
+				raw_input("press enter to continue")
+		except ValueError:
 			print "Error Insert Article Again... "
-			raw_input("press enter to continue")
-		except:
-			print "Article Added"
-			break
-	QUANTITY()
-def QUANTITY():
+			
+def QUANTITYS():
 	QUAN = True
 	while QUAN == True:
 		QUANTITY = raw_input("Insert Quantity article\n")
+		INV[ARTICLE]= QUANTITY
 		try:
-			int(QUANTITY)
-			PRICE()	
-			return False
+			if int(QUANTITY):
+				PRICES()	
+				QUAN = False
+			else:
+				print "Only integer numbers"
+				QUAN = True
 		except ValueError:
 			print "Only numbers"
-def PRICE():
+	QUANTITYS()
+def PRICES():
 	PRI = True
 	while PRI == True:
-		PRICE = float(raw_input("Insert the price of the article\n"))
+		PRICE = raw_input("Insert the price of the article\n")
+		PRIC[ARTICLE]= PRICE
 		try:
-			float(PRICE)
-			QUESTION()
-			PRI = False
+			if float(PRICE):
+				QUESTION()
+				PRI = False
+			else:
+				print "Only float numbers"
+				PRI = True
 		except ValueError:
-			print "Only numbers"
-def Sell():
-	SELL [ARTICLE] = QUANTITY, PRICE
+			print "Only Float numbers"
+			PRI = True
 #Here we create a function that allow to the user an option to get out
 def EXIT():
 	print "Thanks for Visit Us"
@@ -85,14 +101,18 @@ def MENU():
 		print "#1 Add an item "
 		print "#2 Sell Articles"
 		print "#3 Exit"
-		DATA=input("Insert an Option\n")
-		if DATA ==1:
+		DATA=raw_input("Insert an Option\n")
+		if DATA =="1":
 			ARTICLE() 
-		if DATA == 2:
-			print SELL
-		elif DATA == 3:
+		elif DATA == "2":
+			print PRIC
+			print INV
+			raw_input("Press enter")
+		elif DATA == "3":
 			EXIT()
 		else:
 			print "No entiendo la instruccion"
 			raw_input("press enter to continue")
+			os.system("cls")
+           	os.system("clear")
 MENU()
