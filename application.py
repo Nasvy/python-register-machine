@@ -22,9 +22,9 @@ def DONE():
         print "The total of "+ i + " is: " + str(MULTY) +"$\n"
         total = MULTY + total
     print "Invoice Total is: " + str(total)
+    total = total
     raw_input("press enter")
     DISCOUNT()
-
 
 def BEST_SELLER():
     for i in PRIC:
@@ -45,12 +45,12 @@ def DISCOUNT():
     CARD = raw_input("Do you have a gold or silver card?\n")
     CARD = CARD.lower()
     if CARD == "gold" or CARD == "gold card":
-        REDUCTION = TOTAL * 0.5
-        TOTAL = TOTAL - REDUCTION
+        REDUCTION = total * 0.5
+        total = total - REDUCTION
         INVOICE()
     elif CARD == "silver" or CARD == "silver card":
-        REDUCTION = TOTAL * 0.2
-        TOTAL = TOTAL - REDUCTION
+        REDUCTION = total * 0.2
+        total = total - REDUCTION
          
         INVOICE()
     else:
