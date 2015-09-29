@@ -1,9 +1,7 @@
 """
 >>>In this Application We create a register machine 
-
 >>>when you use a Gold card you gonna recieve a discount of 5%
 or if you use a Silver card you gonna recieve a discount of 2%
-
 >>>
 """
 print """
@@ -11,12 +9,8 @@ print """
 import os
 import sys 
 TOTAL= 0.0
-PRIC = {
-	
-}
-INV = {
-	
-}
+PRIC = {}
+INV = {}
 def DISCOUNT():
 	CARD = raw_input("Do you have a gold or silver card?\n")
 	CARD = CARD.lower()
@@ -33,7 +27,7 @@ def QUESTION():
 	QUEST = raw_input("Do you want to Insert another article? Y/N or you're Done?\n")
 	QUEST = QUEST.lower()
 	if QUEST == "y" or QUEST == "yes":
-		ARTICLE()
+		ARTICLES()
 	elif QUEST == "n" or QUEST == "no":
 		MENU()
 	elif QUEST == "Done":
@@ -50,30 +44,28 @@ def ARTICLES():
 		try:
 			if  str(ARTICLE).isalpha() == True:
 				print "Article Added"
-				QUANTITYS()
+				ASD = True
 			else:
 				print "Error"
 				ASD = False
 				raw_input("press enter to continue")
 		except ValueError:
 			print "Error Insert Article Again... "
-			
-def QUANTITYS():
+		INV[ARTICLE]=""
+		PRIC[ARTICLE]=""
 	QUAN = True
 	while QUAN == True:
 		QUANTITY = raw_input("Insert Quantity article\n")
 		INV[ARTICLE]= QUANTITY
 		try:
 			if int(QUANTITY):
-				PRICES()	
 				QUAN = False
 			else:
 				print "Only integer numbers"
 				QUAN = True
 		except ValueError:
 			print "Only numbers"
-	QUANTITYS()
-def PRICES():
+		INV[ARTICLE]=QUANTITY
 	PRI = True
 	while PRI == True:
 		PRICE = raw_input("Insert the price of the article\n")
@@ -88,6 +80,8 @@ def PRICES():
 		except ValueError:
 			print "Only Float numbers"
 			PRI = True
+		PRIC[ARTICLE]=PRICE
+
 #Here we create a function that allow to the user an option to get out
 def EXIT():
 	print "Thanks for Visit Us"
@@ -103,7 +97,7 @@ def MENU():
 		print "#3 Exit"
 		DATA=raw_input("Insert an Option\n")
 		if DATA =="1":
-			ARTICLE() 
+			ARTICLES() 
 		elif DATA == "2":
 			print PRIC
 			print INV
