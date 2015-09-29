@@ -8,13 +8,24 @@ print """
 """
 import os
 import sys 
-TOTAL= 0.0
 PRIC = {}
 INV = {}
+MULTY = 0
+total = 0
+def INVOICE():
+    pass
+
 def DONE():
+    total = 0
     for i in PRIC:
-        print "The total of "+i+ " is: " + str(int(PRIC[i]) * int(INV[i])) + "$\n"
+        MULTY = int(PRIC[i]) * int(INV[i])
+        print "The total of "+ i + " is: " + str(MULTY) +"$\n"
+        total = MULTY + total
+    print "Invoice Total is: " + str(total)
     raw_input("press enter")
+    DISCOUNT()
+
+
 def BEST_SELLER():
     for i in PRIC:
         print "Article: "+i
@@ -24,7 +35,7 @@ def BEST_SELLER():
             print "In the Store are " +str(INV[i])+ " "+ i + "s\n"
         elif INV[i] <= 1:
             print "There are " +str(INV[i])+ " "+ i + " In the Store\n"
-    OK = raw_input("You are done y/n\n")
+    OK = raw_input("Are you done to continue to the invoice? y/n\n")
     OK = OK.lower()
     if OK == "y" or OK == "yes":
         DONE()
@@ -36,11 +47,12 @@ def DISCOUNT():
     if CARD == "gold" or CARD == "gold card":
         REDUCTION = TOTAL * 0.5
         TOTAL = TOTAL - REDUCTION
-        return TOTAL
+        INVOICE()
     elif CARD == "silver" or CARD == "silver card":
         REDUCTION = TOTAL * 0.2
         TOTAL = TOTAL - REDUCTION
-        return TOTAL 
+         
+        INVOICE()
     else:
         TOTAL= TOTAL   
 #here the cashier can insert another articles
