@@ -13,121 +13,98 @@ INV = {}
 MULTY = 0
 TOTAL = 0
 LIST=[]
+BILL={}
 #def INVOICE():
     #pass
 
 def DONE():
-
-
     PREG = True
     while PREG == True:
         for i in INV:
-            print INV
-            ART = 0
             BUY = raw_input("Which article or articles do you want to buy?")
+            BUY = BUY.lower()
             if BUY == BUY in INV and INV[i]>=0:
-                INV[BUY] = int(INV[BUY])-1
-                ADD= LIST.append(BUY)
-                print LIST
-                PREG = True
+                ADD = LIST.append(BUY)
+                print "In your shopping cart are: \n" + str(LIST)
                 VAR = LIST.count(i)
-                print VAR
-                raw_input("Press enter")
-                EX = raw_input("Do you finish y/n \n")
-                EX= EX.lower()
-                if EX== "y" or EX == "yes":
-                    PREGU = True
-                    while PREGU== True: 
-                        try:
-                            HAVE = raw_input("Do you have a card? y/n\n")
-                            HAVE = HAVE.lower()
-                            if HAVE == "y" or HAVE == "yes":
-                                CARD = raw_input("Do you have a gold or silver card? \n")
-                                CARD = CARD.lower()
-                                try:
-                                    if CARD == "gold" or CARD == "gold card":
-                                        TOTAL = 0
-                                        for i in PRIC:
-                                            if i == i in LIST:
-                                                MULTY = float(PRIC[i]) * float(VAR)
-                                                print "The total of "+ i + " is: " + str(MULTY) +"$\n"
-                                                TOTAL = MULTY + TOTAL
-                                        print "Invoice Total is: " + str(TOTAL)
-                                        raw_input("Press enter")
-                                        os.system("cls")
-                                        REDUCTION = TOTAL * 0.05
-                                        TOTAL = TOTAL - REDUCTION
-                                        TOTAL = (TOTAL * 0.12) + TOTAL
-                                        print "Your total is :" + str(TOTAL)
-                                        raw_input("Press enter")
-                                        os.system("cls")
-                                        MENU()
-                                        PREGU = False
-                                        PREG = False
-                                        break
-                                    elif CARD == "silver" or CARD == "silver card":
-                                        REDUCTION = TOTAL * 0.02
-                                        TOTAL = TOTAL - REDUCTION
-                                        TOTAL = (TOTAL * 0.12) + TOTAL
-                                        print "Your total is :" + str(TOTAL)
-                                        raw_input("Press enter")
-                                        os.system("cls")
-                                        MENU()
-                                        PREGU = False
-                                        PREG = False
-                                        break
-                                    else: 
-                                        print "This card doesn't exists"
-                                except ValueError:
-                                    print "insert a valid opction"
-                                    PREGU = True
-                            elif HAVE == "n" or HAVE == "no":
-                                TOTAL = (TOTAL * 0.12) + TOTAL
-                                print "Your total is :" + str(TOTAL)
-                                raw_input("Press enter")
-                                os.system("cls")
-                                return MENU()
-                        except ValueError:
-                            print "Insert a valid option"
-                            PREGU = True
-                elif EX == "no" or EX == "n":
-                    PREG= True
+                BILL[BUY]= VAR
+                PREG = True
+            elif BUY == "gold" or BUY == "gold card" or BUY == "silver" or BUY == "silver card":
+                ADD = LIST.append(BUY)
+                print "In your shopping cart are: \n" + str(LIST)
+            elif BUY == "done":
+                TOTAL = 0
+                for i in PRIC:
+                    if i == i in LIST:
+                        MULTY = float(PRIC[i]) * float(BILL[i])
+                        print "The total of "+ i + " is: " + str(MULTY) +"$\n"
+                        TOTAL = MULTY + TOTAL
+                for i in LIST:
+                    if "gold" in LIST or "gold card" in LIST:
+                        print "Invoice Subtotal is: " "%.2f" %float(TOTAL)
+                        REDUCTION = TOTAL * 0.05
+                        TOTAL = TOTAL - REDUCTION
+                        print "Your Total with discount is: " "%.2f" %float(TOTAL)
+                        TOTAL = (TOTAL * 0.12) + TOTAL
+                        print "Your total is :" + "%.2f" % float(TOTAL)
+                        raw_input("Press enter")
+                        os.system("cls")
+                        RESET()
+                        MENU() 
+                    elif "silver" in LIST or "silver card" in LIST:
+                        REDUCTION = TOTAL * 0.02
+                        TOTAL = TOTAL - REDUCTION
+                        TOTAL = (TOTAL * 0.12) + TOTAL
+                        print "Your total is: " "%.2f" %float(TOTAL)
+                        raw_input("Press enter")
+                        os.system("cls")
+                        RESET()
+                        MENU()
+                    elif "silver" in LIST and "gold" in LIST:
+                        print "Invoice Total is: " "%.2f" %float(TOTAL)
+                        REDUCTION = TOTAL * 0.05
+                        TOTAL = TOTAL - REDUCTION
+                        TOTAL = (TOTAL * 0.12) + TOTAL
+                        print "Your total is: " + "%.2f" % float(TOTAL)
+                        raw_input("Press enter")
+                        os.system("cls")
+                        RESET()
+                        MENU()
+                    else:
+                        print "Invoice Total is: " "%.2f" %float(TOTAL)
+                        TOTAL = (TOTAL * 0.12) + TOTAL
+                        print "Your total is: "  "%.2f" % float(TOTAL)
+                        raw_input("Press enter")
+                        os.system("cls")
+                        RESET()
+                        MENU()
+        #raw_input ("Press enter")
 
-            #elif BUY not in INV or INV[i] <=0:
-                #print "Not more" + BUY + "In store"
-                #PREG = True
-                
-    
-
+def RESET():
+    del LIST[0:]
 def BEST_SELLER():
     for i in PRIC:
         print "Article: "+i
         print "The cost is "+str(PRIC[i])
-    for i in INV:
-        if INV[i] > 1:
-            print "In the Store are " +str(INV[i])+ " "+ i + "s\n"
-        elif INV[i] <= 1:
-            print "There are " +str(INV[i])+ " "+ i + " In the Store\n"
     OK = raw_input("...Are you done to continue to the invoice? y/n\n")
     OK = OK.lower()
 
     if OK == "y" or OK == "yes":
         DONE()
+        os.system("cls")
     elif OK == "n" or OK == "no":
         QUESTION()
 #def DISCOUNT():
      
 #here the cashier can insert another articles
 def QUESTION():
-    QUEST = raw_input("Do you want to Insert another article? Y/N or you're Done?\n")
+    QUEST = raw_input("Do you want to Insert another article? Y/N\n")
     QUEST = QUEST.lower()
     if QUEST == "y" or QUEST == "yes":
         os.system("cls")
         ARTICLES()
     elif QUEST == "n" or QUEST == "no":
         MENU()
-    elif QUEST == "done":
-        BEST_SELLER()
     else:
         print "Insert a valid option"
         QUESTION()
@@ -137,6 +114,7 @@ def ARTICLES():
     ASD = False
     while ASD == False:
         ARTICLE = raw_input(">>>Insert an article<<<\n")
+        ARTICLE = ARTICLE.lower()
         try:
             if  str(ARTICLE).isalpha() == True:
                 print "Article Added"
@@ -150,18 +128,6 @@ def ARTICLES():
         except ValueError:
             print "***Fatal Error*** \n Insert Article Again***"
 
-    QUAN = True
-    while QUAN == True:
-        QUANTITY = raw_input(">>>Insert Quantity article<<<\n")
-        try:
-            if int(QUANTITY):
-                INV[ARTICLE]= QUANTITY
-                QUAN = False
-            else:
-                print "***Fatal Error*** \n Only integer numbers!"
-                QUAN = True
-        except ValueError:
-            print "Only numbers!!"
     PRI = True
     while PRI == True:
         PRICE = raw_input(">>>Insert the price of the article<<<\n")
