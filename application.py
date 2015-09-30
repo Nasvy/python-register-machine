@@ -12,58 +12,92 @@ PRIC = {}
 INV = {}
 MULTY = 0
 TOTAL = 0
+LIST=[]
 #def INVOICE():
     #pass
 
 def DONE():
-    TOTAL = 0
-    for i in PRIC:
-        MULTY = float(PRIC[i]) * float(INV[i])
-        print "The total of "+ i + " is: " + str(MULTY) +"$\n"
-        TOTAL = MULTY + TOTAL
-    #TOTAL = TOTAL
-    print "Invoice Total is: " + str(TOTAL)
-    raw_input("Press enter")
-    os.system("cls")
+
 
     PREG = True
-    while PREG== True: 
-        try:
-            HAVE = raw_input("Do you have a card? y/n\n")
-            HAVE = HAVE.lower()
-            if HAVE == "y" or HAVE == "yes":
-                CARD = raw_input("Do you have a gold or silver card? \n")
-                CARD = CARD.lower()
-                try:
-                    if CARD == "gold" or CARD == "gold card":
-                        REDUCTION = TOTAL * 0.05
-                        TOTAL = TOTAL - REDUCTION
-                        TOTAL = (TOTAL * 0.12) + TOTAL
-                        print "Your total is :" + str(TOTAL)
-                        raw_input("Press enter")
-                        os.system("cls")
-                        PREG = False
-                    elif CARD == "silver" or CARD == "silver card":
-                        REDUCTION = TOTAL * 0.02
-                        TOTAL = TOTAL - REDUCTION
-                        TOTAL = (TOTAL * 0.12) + TOTAL
-                        print "Your total is :" + str(TOTAL)
-                        raw_input("Press enter")
-                        os.system("cls")
-                        PREG = False
-                    else: 
-                        print "This card doesn't exists"
-                except ValueError:
-                    print "insert a valid opction"
-                    PREG = True
-            elif HAVE == "n" or HAVE == "no":
-                TOTAL = (TOTAL * 0.12) + TOTAL
-                print "Your total is :" + str(TOTAL)
+    while PREG == True:
+        for i in INV:
+            print INV
+            ART = 0
+            BUY = raw_input("Which article or articles do you want to buy?")
+            if BUY == BUY in INV and INV[i]>=0:
+                INV[BUY] = int(INV[BUY])-1
+                ADD= LIST.append(BUY)
+                print LIST
+                PREG = True
+                VAR = LIST.count(i)
+                print VAR
                 raw_input("Press enter")
-                os.system("cls")
-        except ValueError:
-            print "Insert a valid option"
-            PREG = True
+                EX = raw_input("Do you finish y/n \n")
+                EX= EX.lower()
+                if EX== "y" or EX == "yes":
+                    PREGU = True
+                    while PREGU== True: 
+                        try:
+                            HAVE = raw_input("Do you have a card? y/n\n")
+                            HAVE = HAVE.lower()
+                            if HAVE == "y" or HAVE == "yes":
+                                CARD = raw_input("Do you have a gold or silver card? \n")
+                                CARD = CARD.lower()
+                                try:
+                                    if CARD == "gold" or CARD == "gold card":
+                                        TOTAL = 0
+                                        for i in PRIC:
+                                            if i == i in LIST:
+                                                MULTY = float(PRIC[i]) * float(VAR)
+                                                print "The total of "+ i + " is: " + str(MULTY) +"$\n"
+                                                TOTAL = MULTY + TOTAL
+                                        print "Invoice Total is: " + str(TOTAL)
+                                        raw_input("Press enter")
+                                        os.system("cls")
+                                        REDUCTION = TOTAL * 0.05
+                                        TOTAL = TOTAL - REDUCTION
+                                        TOTAL = (TOTAL * 0.12) + TOTAL
+                                        print "Your total is :" + str(TOTAL)
+                                        raw_input("Press enter")
+                                        os.system("cls")
+                                        MENU()
+                                        PREGU = False
+                                        PREG = False
+                                        break
+                                    elif CARD == "silver" or CARD == "silver card":
+                                        REDUCTION = TOTAL * 0.02
+                                        TOTAL = TOTAL - REDUCTION
+                                        TOTAL = (TOTAL * 0.12) + TOTAL
+                                        print "Your total is :" + str(TOTAL)
+                                        raw_input("Press enter")
+                                        os.system("cls")
+                                        MENU()
+                                        PREGU = False
+                                        PREG = False
+                                        break
+                                    else: 
+                                        print "This card doesn't exists"
+                                except ValueError:
+                                    print "insert a valid opction"
+                                    PREGU = True
+                            elif HAVE == "n" or HAVE == "no":
+                                TOTAL = (TOTAL * 0.12) + TOTAL
+                                print "Your total is :" + str(TOTAL)
+                                raw_input("Press enter")
+                                os.system("cls")
+                                return MENU()
+                        except ValueError:
+                            print "Insert a valid option"
+                            PREGU = True
+                elif EX == "no" or EX == "n":
+                    PREG= True
+
+            #elif BUY not in INV or INV[i] <=0:
+                #print "Not more" + BUY + "In store"
+                #PREG = True
+                
+    
 
 def BEST_SELLER():
     for i in PRIC:
@@ -146,7 +180,7 @@ def ARTICLES():
 
 #Here we create a function that allow to the user an option to get out
 def EXIT():
-    print "Thanks for Visit Us n.n"
+    print "Thanks for Visit Us."
     raw_input(">>>Press Enter for Continue<<<")
     sys.exit()
 #Here we create a menu that shows the options that user can select!
