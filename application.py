@@ -100,21 +100,8 @@ def best_seller():
     for i in PRIC:
         print "article: "+i
         print "The cost is " "$" "%.2f" %float(PRIC[i])
-    invoice = True
-    try:
-        while invoice == True:
-            yes = raw_input("...Are you Done to continue to the invoice? y/n\n")
-            yes = yes.lower()
-            if yes == "y" or yes == "yes":
-                finish()
-                os.system("cls")
-            elif yes == "n" or yes == "no":
-                question()
-            else:
-                print "i dont understand"
-                invoice = True
-    except ValueError:
-        print "Insert a valid option"
+        os.system("cls")
+        finish()
 #here the cashier can insert another articles
 def question():
     """This function ask the user if he wants to continue adding articles"""
