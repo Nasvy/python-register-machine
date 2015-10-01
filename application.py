@@ -163,6 +163,21 @@ def menu():
     """Here we create a menu that shows the options that user can select!"""
     while True:
         os.system("cls")
+        print""" /$$      /$$                  /$$                 /$$        """
+        print"""| $$$    /$$$                 | $$                | $$        """
+        print"""| $$$$  /$$$$ /$$$$$$  /$$$$$$| $$   /$$ /$$$$$$ /$$$$$$       """
+        print"""| $$ $$/$$ $$|____  $$/$$__  $| $$  /$$//$$__  $|_  $$_/       """
+        print"""| $$  $$$| $$ /$$$$$$| $$  \__| $$$$$$/| $$$$$$$$ | $$  __   """
+        print"""| $$\  $ | $$/$$__  $| $$     | $$_  $$| $$_____/ | $$ /$$           """
+        print"""| $$ \/  | $|  $$$$$$| $$     | $$ \  $|  $$$$$$$ |  $$$$/      """
+        print"""|__/     |__/\_______|__/     |__/  \__/\_______/  \___/      """                           
+                                                                     
+        print"""========================================="""
+        print"""|----------------Welcome...-------------|"""
+        print"""|-------Hi, here you can insert---------|"""
+        print"""|-----All the products you want---------|"""
+        print"""========================================="""
+
         print "Welcome, please select an option\n"
         print "#1 Add an item "
         print "#2 Sell articles"
