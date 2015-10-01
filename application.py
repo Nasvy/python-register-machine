@@ -4,8 +4,6 @@
 or if you use a Silver card you gonna recieve a discount of 2%
 >>>
 """
-print """
-"""
 import os
 import sys
 PRIC = {}
@@ -100,9 +98,7 @@ def best_seller():
     for i in PRIC:
         print "article: "+i
         print "The cost is " "$" "%.2f" %float(PRIC[i])
-        os.system("cls")
-        finish()
-#here the cashier can insert another articles
+    finish()
 def question():
     """This function ask the user if he wants to continue adding articles"""
     quest = raw_input("Do you want to Insert another article? Y/N\n")
@@ -115,7 +111,6 @@ def question():
     else:
         print "Insert a valid option"
         question()
-#Here the Cashier insert the articles
 def articles():
     """Here the User insert the articles and the prices"""
     asd = False
@@ -133,7 +128,7 @@ def articles():
                 PRIC[article] = ""
                 asd = True
             else:
-                print "Error"
+                print "Error you can only insert words"
                 asd = False
                 raw_input(">>>press enter to continue<<<")
         except ValueError:
@@ -153,7 +148,6 @@ def articles():
                 pri = True
         except ValueError:
             print ">>>Only Float numbers<<<"
-#Here we create a function that allow to the user an option to get out
 def out():
     """This function exits the program"""
     print "Thanks for Visit Us."
@@ -163,15 +157,15 @@ def menu():
     """Here we create a menu that shows the options that user can select!"""
     while True:
         os.system("cls")
-        print""" /$$      /$$                  /$$                 /$$        """
-        print"""| $$$    /$$$                 | $$                | $$        """
-        print"""| $$$$  /$$$$ /$$$$$$  /$$$$$$| $$   /$$ /$$$$$$ /$$$$$$       """
-        print"""| $$ $$/$$ $$|____  $$/$$__  $| $$  /$$//$$__  $|_  $$_/       """
-        print"""| $$  $$$| $$ /$$$$$$| $$  \__| $$$$$$/| $$$$$$$$ | $$  __   """
-        print"""| $$\  $ | $$/$$__  $| $$     | $$_  $$| $$_____/ | $$ /$$           """
-        print"""| $$ \/  | $|  $$$$$$| $$     | $$ \  $|  $$$$$$$ |  $$$$/      """
-        print"""|__/     |__/\_______|__/     |__/  \__/\_______/  \___/      """                           
-                                                                     
+        print u""" /$$      /$$                  /$$                 /$$        """
+        print u"""| $$$    /$$$                 | $$                | $$        """
+        print u"""| $$$$  /$$$$ /$$$$$$  /$$$$$$| $$   /$$ /$$$$$$ /$$$$$$       """
+        print u"""| $$ $$/$$ $$|____  $$/$$__  $| $$  /$$//$$__  $|_  $$_/       """
+        print u"""| $$  $$$| $$ /$$$$$$| $$  \__| $$$$$$/| $$$$$$$$ | $$  __   """
+        print u"""| $$\  $ | $$/$$__  $| $$     | $$_  $$| $$_____/ | $$ /$$           """
+        print u"""| $$ \/  | $|  $$$$$$| $$     | $$ \  $|  $$$$$$$ |  $$$$/      """
+        print u"""|__/     |__/\_______|__/     |__/  \__/\_______/  \___/      """
+
         print"""========================================="""
         print"""|----------------Welcome...-------------|"""
         print"""|-------Hi, here you can insert---------|"""
