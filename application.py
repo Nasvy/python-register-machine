@@ -21,12 +21,10 @@ def finish():
         for i in INV:
             buy = raw_input("Which article or articles do you want to buy?\n")
             buy = buy.lower()
-            if buy == buy in INV and INV[i] >= 0:
+            if buy == buy in INV:
                 LIST.append(buy)
                 print "In your shopping cart are: \n" + str(LIST)
-                var = LIST.count(i)
-                COMPRAS.append(buy)
-                BILL[buy] = var
+                BILL[buy] = LIST.count(i)
                 preg = True
             elif buy not in INV and (buy != "silver") and (buy != "gold") and (buy != "done"):
                 print "We don't have this item, insert a valid Item"
@@ -42,13 +40,16 @@ def finaly():
     os.system("cls")
     total = 0
     for i in PRIC:
-        print BILL
-        if i == i in BILL:
-            print COMPRAS
-            multy = float(PRIC[i]) * float(BILL[i])
-            print "The price of total of your " + str(BILL[i]) +" "+str(COMPRAS.count(i))+ "(s) is: " "$" "%.2f" %float(multy)+"\n" 
-            total = multy + total
-    for i in LIST:
+        multy = float(LIST.count(i)) * float(PRIC[i])
+        unit = LIST.count(i)
+        print "Price of your " + str(unit) +" "+ i + "(s) is: ""$.""%.2f" %float(multy) +"\n"
+        total = multy + total
+    cards(total)
+
+
+def cards(total):
+    """ Here is the cards functions """
+    while True:
         if "gold" in LIST or "gold card" in LIST:
             print "Invoice Subtotal is: ..................." "$" "%.2f" %float(total)
             print "The tax of IVA is:......................" "$" "%.2f" %float(total * 0.12)
@@ -58,10 +59,6 @@ def finaly():
             print "Our discount with gold card is:........." "$" "%.2f" %float(total*0.05)
             print "___________________________________________"
             print "Your total with discount is:............" "$" "%.2f" %float(reduction)
-            raw_input("Press enter")
-            os.system("cls")
-            reset()
-            menu()
         elif "silver" in LIST or "silver card" in LIST:
             print "Invoice Subtotal is: ..................." "$" "%.2f" %float(total)
             print "The tax of IVA is:......................" "$" "%.2f" %float(total * 0.12)
@@ -71,10 +68,6 @@ def finaly():
             print "Our discount with silver card is:......." "$" "%.2f" %float(total*0.02)
             print "___________________________________________"
             print "Your total with discount is:............" "$" "%.2f" %float(reduction)
-            raw_input("Press enter")
-            os.system("cls")
-            reset()
-            menu()
         elif "silver" in LIST and "gold" in LIST:
             print "Invoice Subtotal is: ..................." "$" "%.2f" %float(total)
             print "The tax of IVA is:......................" "$" "%.2f" %float(total * 0.12)
@@ -84,10 +77,6 @@ def finaly():
             print "Our discount with gold card is:........." "$" "%.2f" %float(total*0.05)
             print "___________________________________________"
             print "Your total with discount is:............" "$" "%.2f" %float(reduction)
-            raw_input("Press enter")
-            os.system("cls")
-            reset()
-            menu()
         else:
             print "Invoice total is: ......................" "$" "%.2f" %float(total)
             print "The tax of IVA is:......................" "$" "%.2f" %float(total * 0.12)
@@ -96,11 +85,13 @@ def finaly():
             print "You don't have a discount card.........." "$" "%.2f" %float(0)
             print "___________________________________________"
             print "The total of your invoice is:..........." "$" "%.2f" %float(total)
-            
-            raw_input("Press enter")
-            os.system("cls")
-            reset()
-            menu()
+
+        raw_input("Press enter")
+        os.system("cls")
+        reset()
+        menu()
+
+
 def reset():
     """This function reset the list of articles"""
     del LIST[0:]
